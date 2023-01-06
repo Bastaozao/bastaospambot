@@ -15,6 +15,9 @@ if cache_exists == True:
     keys = cacheread.readlines(0)
     cacheread.close()
 
+    for i in range(len(keys)):
+        keys[i] = keys[i].rstrip('\n')
+
 elif cache_exists == False:
     cachewrite = open('cache.txt', 'w')
     cachewrite.write(f'{defaultkeys[0]}\n{defaultkeys[1]}')
@@ -31,7 +34,7 @@ def boxchecked():
         iinpt.config(state=NORMAL)
     
 def spam():
-    rang = int(inpt2.get()) + 1
+    rang = int(inpt2.get())
     if cbtnvar.get() == 1:
         brk = float(iinpt.get())
         for i in range(rang):
@@ -42,6 +45,13 @@ def spam():
             pc.typewrite(f'{inpt.get()}\n')    
 
 def wait():
+    cacheread = open('cache.txt', 'r')
+    keys = cacheread.readlines(0)
+    cacheread.close()
+
+    for i in range(len(keys)):
+        keys[i] = keys[i].rstrip('\n')
+
     while (True):
         kbw = keyboard.read_key()
         if kbw == keys[0]:
@@ -87,7 +97,10 @@ def chgkeys():
         keys = cacheread.readlines(0)
         cacheread.close()
 
-        lab3 = Label(main, text=f'SPAM - {keys[0]} EXIT - {keys[1]}', pady=5)
+        for i in range(len(keys)):
+            keys[i] = keys[i].rstrip('\n')
+
+        lab3 = Label(main, text=f'SPAM - {keys[0]}\nEXIT - {keys[1]}', pady=10, padx=10)
         lab3.grid(column=1, row=7)
         
 
@@ -115,7 +128,10 @@ def rescache():
     keys = cacheread.readlines(0)
     cacheread.close()
 
-    lab3 = Label(main, text=f'SPAM - {keys[0]} EXIT - {keys[1]}', pady=5)
+    for i in range(len(keys)):
+        keys[i] = keys[i].rstrip('\n')
+
+    lab3 = Label(main, text=f'SPAM - {keys[0]}\nEXIT - {keys[1]}', pady=10, padx=10)
     lab3.grid(column=1, row=7)
 
 cbtnvar = IntVar()
@@ -127,7 +143,7 @@ inpt2 = Entry(main)
 cbtn = Checkbutton(main, text='ADD A BREAK', variable=cbtnvar, command=boxchecked)
 iinpt = Entry(main, state=DISABLED)
 btnrun = Button(main, text='RUN', command=wait, padx=10)
-lab3 = Label(main, text=f'SPAM - {keys[0]} EXIT - {keys[1]}', pady=5)
+lab3 = Label(main, text=f'SPAM - {keys[0]}\nEXIT - {keys[1]}', pady=10, padx=10)
 lab4 = Label(main, text='NOTE: IF THE SPAMS CRASHING TURN ON THE BREAK', padx=10)
 changkeys = Button(main, text='CHANGE KEYS', command=chgkeys)
 resetcache = Button(main, text='RESET KEYS', command=rescache)
