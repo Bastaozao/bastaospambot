@@ -26,6 +26,7 @@ elif cache_exists == False:
 
 main = Tk()
 main.resizable(False, False)
+main.title('bastaospambot')
 
 def boxchecked():
     if cbtnvar.get() == 0:
@@ -63,6 +64,7 @@ def wait():
 def chgkeys():
     keyconfg = Tk()
     keyconfg.resizable(False, False)
+    keyconfg.title('changekeys')
 
     key1l = Label(keyconfg, text='SPAM KEY: ')
     key1 = Entry(keyconfg)
