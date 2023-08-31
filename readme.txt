@@ -6,4 +6,4 @@ https://www.python.org
 And some extensions. To get extensions you need to execute:
 extensions.bat
 
-note: please keep spam.py in a folder
+note: you need to keep spam.py in the folder
